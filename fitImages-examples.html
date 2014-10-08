@@ -1,0 +1,133 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>jquery.fitImages examples</title>
+<link rel="stylesheet" href="css/normalize.css" />
+<link rel="stylesheet" href="css/style.css" />
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+<script src="js/vendor/jquery-1.9.1.min.js"></script>
+<script src="js/jquery.fitImages-1.2.min.js"></script>
+
+</head>
+
+<body>
+	<a class="update" href="#">update</a>
+	<a class="destroy" href="#">destroy</a>
+	<div class="ejemplo1 clearfix">
+		<section>
+	    	<div class="cuadrado">
+	    		<img src="img/lory.jpg">
+	    	</div>
+	    	<div class="horizontal">
+	    		<img src="img/lory.jpg">
+	    	</div>
+	    	<div class="vertical">
+	    		<a href="#"><img src="img/lory.jpg"></a>
+	    	</div>
+	    	<div class="vertical2">
+	    		<img src="img/lory.jpg">
+	    	</div>
+	    </section>
+    </div>
+    <div class="ejemplo2 clearfix">
+		<section>
+	    	<div class="cuadrado">
+	    		<a href="#"><img src="img/quadrada.jpg"></a>
+	    	</div>
+	    	<div class="horizontal">
+	    		<img src="img/quadrada.jpg">
+	    	</div>
+	    	<div class="vertical">
+	    		<img src="img/quadrada.jpg">
+	    	</div>
+	    	<div class="vertical2">
+	    		<img src="img/quadrada.jpg">
+	    	</div>
+	    </section>
+    </div>
+    <div class="ejemplo3 clearfix">
+		<section>
+	    	<div class="cuadrado">
+	    		<a href="#"><img src="img/messi86.jpg"></a>
+	    	</div>
+	    	<div class="horizontal">
+	    		<img src="img/messi86.jpg">
+	    	</div>
+	    	<div class="vertical">
+	    		<img src="img/messi86.jpg">
+	    	</div>
+	    	<div class="vertical2">
+	    		<img src="img/messi86.jpg">
+	    	</div>
+            <div class="horizontal">
+            	<iframe width="560" height="315" src="http://www.youtube.com/embed/HKRZ9KRhjhM" frameborder="0" allowfullscreen></iframe>
+            </div>
+	    </section>
+    </div>
+    <div class="ejemplo4 clearfix">
+		<section>
+	    	<div class="cuadrado">
+	    		<a href="#"><img src="img/lory.jpg"></a>
+	    	</div>
+	    	<div class="horizontal">
+	    		<img src="img/lory.jpg">
+	    	</div>
+	    	<div class="vertical">
+	    		<img src="img/lory.jpg">
+	    	</div>
+	    	<div class="vertical2">
+	    		<img src="img/lory.jpg">
+	    	</div>
+	    </section>
+    </div>
+    <div class="ejemplo5 clearfix">
+		<section>
+	    	<div class="cuadrado">
+	    		<a href="#"><img src="img/quadrada.jpg"></a>
+	    	</div>
+	    	<div class="horizontal">
+	    		<img src="img/quadrada.jpg">
+	    	</div>
+	    	<div class="vertical">
+	    		<img src="img/quadrada.jpg">
+	    	</div>
+	    	<div class="vertical2">
+	    		<img src="img/quadrada.jpg">
+	    	</div>
+	    </section>
+    </div>
+    <div class="ejemplo6 clearfix">
+		<section>
+	    	<div class="cuadrado">
+	    		<a href="#"><img src="img/messi86.jpg"></a>
+	    	</div>
+	    	<div class="horizontal">
+	    		<img src="img/messi86.jpg">
+	    	</div>
+	    	<div class="vertical">
+	    		<img src="img/messi86.jpg">
+	    	</div>
+	    	<div class="vertical2">
+	    		<img src="img/messi86.jpg">
+	    	</div>
+            <div class="horizontal">
+            	<iframe width="560" height="315" src="http://www.youtube.com/embed/HKRZ9KRhjhM" frameborder="0" allowfullscreen></iframe>
+            </div>
+	    </section>
+    </div>
+    
+	<script>
+	$(document).ready(function(){
+		$(".ejemplo1 div, .ejemplo2 div, .ejemplo3 div").fitImages();
+		$(".ejemplo4 div, .ejemplo5 div, .ejemplo6 div").fitImages({fitMethod: 'resize'});
+		$('.destroy').click(function(){
+			$(".ejemplo1 div, .ejemplo2 div, .ejemplo3 div, .ejemplo4 div, .ejemplo5 div, .ejemplo6 div").fitImages('destroy');
+		});
+		$('.update').click(function(){
+			$(".ejemplo1 div, .ejemplo2 div, .ejemplo3 div, .ejemplo4 div, .ejemplo5 div, .ejemplo6 div").fitImages('update');
+		});
+
+	});
+	</script>
+</body>
+</html>
