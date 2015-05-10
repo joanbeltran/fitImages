@@ -80,8 +80,7 @@ MIT License
         image.css('position', 'relative');
         return image;
     };
-    var startOnLoad = function(image, container, options) {
-        
+    var startOnLoad = function(image, container, options) {  
         image.one('load', function() {
             fitImage(image, container, options);
         }).each(function() {
