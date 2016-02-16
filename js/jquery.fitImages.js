@@ -3,9 +3,9 @@ fitImages 1.3 author: Joan Beltran
 MIT License
 */ 
 ;(function ( $, window, document, undefined ) {
-
-    var fitImages = "fitImages",
-    dataPlugin = "plugin_" + fitImages,
+    'use strict';
+    var fitImages = 'fitImages',
+    dataPlugin = 'plugin_' + fitImages,
     // default options
     defaults = {
         animation : 'fade', // fade or nothing
@@ -28,7 +28,7 @@ MIT License
     };
     var getProportion = function(containerDims, imageDims, options) {
         var prop = containerDims.innerWidth/imageDims.width;
-        if (options.fitMethod && options.fitMethod=='resize') {
+        if (options.fitMethod && options.fitMethod === 'resize') {
             if (containerDims.innerHeight/imageDims.height < prop) {
                 prop = containerDims.innerHeight/imageDims.height;
             }
@@ -46,7 +46,7 @@ MIT License
             'top':top,
             'left':left
         });
-        if (options.animation == 'fade') {
+        if (options.animation === 'fade') {
             image.fadeIn(options.animationTime);
 
         } else {
@@ -77,14 +77,21 @@ MIT License
     };
     var setImage = function(element) {
         var image = element.find('img').first();
-        image.css('position', 'relative');
-        return image;
+        if(image.length) {
+            image.css('position', 'relative');
+            return image;
+        } else {
+            return false;
+        }
+        
     };
-    var startOnLoad = function(image, container, options) {  
+    var startOnLoad = function(image, container, options) { 
         image.one('load', function() {
             fitImage(image, container, options);
         }).each(function() {
-          if(this.complete) $(this).load();
+            if(this.complete) {
+                $(this).load();   
+            }
         });
         var src = image.attr('src');
         image.attr('src',null).attr('src',src);
@@ -104,20 +111,22 @@ MIT License
         init: function(options) {
             $.extend( this.options, options );
             var $element = $(this.element);
-            var options = this.options;
             var image = setImage($element);
-            startOnLoad(image, $element, options);
-            if (options.responsive) {
-                $(window).resize(function() {
-                    fitImage(image, $element, options);
-                });
+            var opts = this.options;
+            if (image) {
+                startOnLoad(image, $element, this.options);
+                if (this.options.responsive) {
+                    $(window).resize(function() {
+                       fitImage(image, $element, opts);
+                    });
+                }
             }
         },
         destroy: function() {
             semiDestroy(this.element);
             this.element.data( dataPlugin, null );
         },
-        update: function(){
+        update: function() {
             semiDestroy(this.element);
             var $element = $(this.element);
             var image = setImage($element, this.options);
@@ -135,7 +144,7 @@ MIT License
             instance = $(this).data( dataPlugin );
             instance.element = $(this);
             if (typeof arg === 'undefined' || typeof arg === 'object') {
-                if ( typeof instance['init'] === 'function' ) {
+                if ( typeof instance.init === 'function' ) {
                     instance.init( arg );
                 }
             } else if ( typeof arg === 'string' && typeof instance[arg] === 'function' ) {
