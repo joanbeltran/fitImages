@@ -1,12 +1,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>jquery.fitImages examples</title>
+<title>vanilla fitImages examples</title>
 <link rel="stylesheet" href="css/normalize.css" />
 <link rel="stylesheet" href="css/style.css" />
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
-<script src="js/vendor/jquery-1.9.1.min.js"></script>
-<script src="js/jquery.fitImages.js"></script>
+<!-- <script src="js/vendor/jquery-1.9.1.min.js"></script> -->
+<script src="js/fitImages.js"></script>
 
 </head>
 
@@ -102,7 +102,7 @@
 	    		<img src="img/messi86.jpg">
 	    	</div>
 	    	<div class="vertical">
-	    		<img src="img/messi86.jpg">
+	    		<!-- <img src="img/messi86.jpg"> -->
 	    	</div>
 	    	<div class="vertical2">
 	    		<img src="img/messi86.jpg">
@@ -111,15 +111,18 @@
     </div>
 
 	<script>
-	$(document).ready(function(){
-		$(".ejemplo1 div, .ejemplo2 div, .ejemplo3 div").fitImages();
-		$(".ejemplo4 div, .ejemplo5 div, .ejemplo6 div").fitImages({fitMethod: 'resize'});
-		$('.destroy').click(function(){
-			$(".ejemplo1 div, .ejemplo2 div, .ejemplo3 div, .ejemplo4 div, .ejemplo5 div, .ejemplo6 div").fitImages('destroy');
-		});
-		$('.update').click(function(){
-			$(".ejemplo1 div, .ejemplo2 div, .ejemplo3 div, .ejemplo4 div, .ejemplo5 div, .ejemplo6 div").fitImages('update');
-		});
+	document.addEventListener('DOMContentLoaded', function() {
+			var FitImages = new fitImages(document.querySelectorAll('.cuadrado, .horizontal'), {
+					fitMethod : 'crop'
+			});
+			var FitImagesResize = new fitImages(document.querySelectorAll('.vertical, .vertical2'), {
+					fitMethod : 'resize'
+			});
+			var buttonUpdate = document.querySelector('.update');
+			buttonUpdate.addEventListener('click', function() {
+					FitImages.update();
+					FitImagesResize.update();
+			});
 
 	});
 	</script>

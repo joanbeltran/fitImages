@@ -1,13 +1,13 @@
 @charset "UTF-8";
 /* CSS Document */
 
-.cuadrado, .horizontal, .vertical, .vertical2 {float:left; margin:10px; background-color: #cff; overflow: hidden;}
+.cuadrado, .horizontal, .vertical, .vertical2 {float:left; margin:10px; background-color: #cff; overflow: hidden; position: relative}
 .cuadrado img, .horizontal img, .vertical img, .vertical2 img {display: none;}
 .cuadrado {width:200px; height:200px;}
 .cuadrado img {width:200px;}
 .horizontal {width:300px; height:200px;}
 .vertical {width:100px; height:200px;}
-.vertical2 {width:150px; height:200px;}
+.vertical2 {width:15%; height:20%;}
 
 .clearfix:after {
     content: ".";
