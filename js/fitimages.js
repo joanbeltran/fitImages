@@ -108,7 +108,13 @@
         },
 
         destroy: function() {
-
+            for(var i = 0; i < this.element.length; i++) {
+                this.imagesObject[i].destroy();
+            }
+            this.update = undefined;
+            this.responsive = undefined;
+            this.init = undefined;
+            this.destroy = undefined;
         }
 
     };
@@ -194,11 +200,23 @@
           st.position = 'relative';
       },
 
+      /**
+       * define all the sizes and set them to the image
+       */
       update: function() {
           if(this.image) {
               this.defineSizes();
               this.defineOffsets();
               this.setImageStyles();
+          }
+      },
+
+      /**
+       * destroy the instance and the styles created
+       */
+      destroy: function() {
+          if(this.image){
+              this.image.style.cssText = '';
           }
       },
 
