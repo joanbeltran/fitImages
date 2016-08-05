@@ -216,7 +216,7 @@
        */
       destroy: function() {
           if(this.image){
-              this.image.style.cssText = '';
+              this.image.removeAttribute('style');
           }
       },
 
